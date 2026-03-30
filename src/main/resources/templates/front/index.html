@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" th:content="${metaDescription}">
+    <title th:text="${pageTitle}">Iran News</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="front">
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="container nav-content">
+        <a href="/" class="logo">
+            <span class="logo-icon">📰</span>
+            <span class="logo-text">Iran<span class="logo-accent">News</span></span>
+        </a>
+        <div class="nav-links">
+            <a href="/" class="nav-link active">Accueil</a>
+            <a href="/admin" class="nav-link">Administration</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+    <div class="container">
+        <h1>Actualités sur la situation en Iran</h1>
+        <p class="hero-subtitle">Suivez les dernières informations, analyses et reportages sur la situation géopolitique en Iran</p>
+    </div>
+</header>
+
+<!-- Articles -->
+<main class="container">
+    <section class="articles-section">
+        <h2 class="section-title">Derniers articles</h2>
+
+        <div th:if="${#lists.isEmpty(articles)}" class="empty-state">
+            <p>Aucun article publié pour le moment.</p>
+        </div>
+
+        <div class="articles-grid">
+            <article th:each="article : ${articles}" class="article-card">
+                <div class="article-card-body">
+                    <div class="article-meta">
+                        <span class="article-date" th:text="${#temporals.format(article.createdAt, 'dd MMMM yyyy')}">01 Janvier 2025</span>
+                        <span class="article-views">👁 <span th:text="${article.viewCount}">0</span> vues</span>
+                    </div>
+                    <h3 class="article-card-title">
+                        <a th:href="@{/article/{id}(id=${article.id})}" th:text="${article.title}">Titre de l'article</a>
+                    </h3>
+                    <p class="article-excerpt" th:text="${article.metaDescription != null ? article.metaDescription : ''}">Description de l'article...</p>
+                    <div class="article-categories">
+                        <span th:each="cat : ${article.categories}" class="category-badge" th:text="${cat.name}">Catégorie</span>
+                    </div>
+                    <a th:href="@{/article/{id}(id=${article.id})}" class="read-more">Lire la suite →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 IranNews — Projet Web Design | ETU003281</p>
+    </div>
+</footer>
+
+</body>
+</html>

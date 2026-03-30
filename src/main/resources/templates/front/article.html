@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" th:content="${metaDescription}">
+    <title th:text="${pageTitle}">Article - Iran News</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="front">
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="container nav-content">
+        <a href="/" class="logo">
+            <span class="logo-icon">📰</span>
+            <span class="logo-text">Iran<span class="logo-accent">News</span></span>
+        </a>
+        <div class="nav-links">
+            <a href="/" class="nav-link">Accueil</a>
+            <a href="/admin" class="nav-link">Administration</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Article Detail -->
+<main class="container">
+    <article class="article-detail">
+        <div class="article-detail-header">
+            <a href="/" class="back-link">← Retour aux articles</a>
+            <h1 th:text="${article.title}">Titre de l'article</h1>
+            <div class="article-detail-meta">
+                <span class="article-date" th:text="${#temporals.format(article.createdAt, 'dd MMMM yyyy')}">01 Janvier 2025</span>
+                <span class="article-views">👁 <span th:text="${article.viewCount}">0</span> vues</span>
+            </div>
+            <div class="article-categories">
+                <span th:each="cat : ${article.categories}" class="category-badge" th:text="${cat.name}">Catégorie</span>
+            </div>
+        </div>
+
+        <div th:if="${article.imageUrl != null and !article.imageUrl.isEmpty()}" class="article-image">
+            <img th:src="${article.imageUrl}" th:alt="${article.title}" alt="Image de l'article">
+        </div>
+
+        <div class="article-content" th:utext="${article.content}">
+            Contenu de l'article...
+        </div>
+    </article>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 IranNews — Projet Web Design | ETU003281</p>
+    </div>
+</footer>
+
+</body>
+</html>

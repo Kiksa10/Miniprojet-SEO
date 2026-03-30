@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Catégories - Administration</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin">
+
+<!-- Admin Navbar -->
+<nav class="admin-navbar">
+    <div class="container nav-content">
+        <a href="/admin" class="logo">
+            <span class="logo-icon">⚙️</span>
+            <span class="logo-text">Iran<span class="logo-accent">News</span> <small>Admin</small></span>
+        </a>
+        <div class="nav-links">
+            <a href="/admin" class="nav-link">Dashboard</a>
+            <a href="/admin/articles" class="nav-link">Articles</a>
+            <a href="/admin/categories" class="nav-link active">Catégories</a>
+            <a href="/" class="nav-link" target="_blank">🌐 Voir le site</a>
+            <a href="/admin/logout" class="nav-link nav-logout">Déconnexion</a>
+        </div>
+    </div>
+</nav>
+
+<main class="container admin-content">
+    <div class="page-header">
+        <h1>Gestion des catégories</h1>
+        <a href="/admin/categories/new" class="btn btn-primary">+ Nouvelle catégorie</a>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+
+    <div th:if="${#lists.isEmpty(categories)}" class="empty-state">
+        <p>Aucune catégorie trouvée.</p>
+    </div>
+
+    <div th:unless="${#lists.isEmpty(categories)}" class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="category : ${categories}">
+                    <td th:text="${category.id}">1</td>
+                    <td th:text="${category.name}">Nom</td>
+                    <td th:text="${category.description}">Description</td>
+                    <td class="actions-cell">
+                        <a th:href="@{/admin/categories/edit/{id}(id=${category.id})}" class="btn btn-sm btn-edit" title="Modifier">✏️</a>
+                        <a th:href="@{/admin/categories/delete/{id}(id=${category.id})}" class="btn btn-sm btn-delete" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')">🗑️</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+</body>
+</html>

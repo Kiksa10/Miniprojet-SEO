@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Article - Administration</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin">
+
+<!-- Admin Navbar -->
+<nav class="admin-navbar">
+    <div class="container nav-content">
+        <a href="/admin" class="logo">
+            <span class="logo-icon">⚙️</span>
+            <span class="logo-text">Iran<span class="logo-accent">News</span> <small>Admin</small></span>
+        </a>
+        <div class="nav-links">
+            <a href="/admin" class="nav-link">Dashboard</a>
+            <a href="/admin/articles" class="nav-link active">Articles</a>
+            <a href="/admin/categories" class="nav-link">Catégories</a>
+            <a href="/" class="nav-link" target="_blank">🌐 Voir le site</a>
+            <a href="/admin/logout" class="nav-link nav-logout">Déconnexion</a>
+        </div>
+    </div>
+</nav>
+
+<main class="container admin-content">
+    <div class="page-header">
+        <h1 th:text="${article.id != null} ? 'Modifier l\'article' : 'Nouvel article'">Nouvel article</h1>
+        <a href="/admin/articles" class="btn btn-secondary">← Retour</a>
+    </div>
+
+    <form th:action="@{/admin/articles/save}" method="post" th:object="${article}" class="admin-form">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{viewCount}">
+        <input type="hidden" th:field="*{createdAt}">
+
+        <div class="form-grid">
+            <div class="form-main">
+                <div class="form-group">
+                    <label for="title">Titre *</label>
+                    <input type="text" id="title" th:field="*{title}" placeholder="Titre de l'article" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Contenu *</label>
+                    <textarea id="content" th:field="*{content}" rows="15" placeholder="Contenu de l'article (HTML supporté)" required></textarea>
+                </div>
+            </div>
+
+            <div class="form-sidebar">
+                <div class="form-card">
+                    <h3>Publication</h3>
+                    <div class="form-group">
+                        <label for="status">Statut</label>
+                        <select id="status" th:field="*{status}">
+                            <option value="DRAFT">Brouillon</option>
+                            <option value="PUBLISHED">Publié</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <h3>SEO</h3>
+                    <div class="form-group">
+                        <label for="metaTitle">Meta Title</label>
+                        <input type="text" id="metaTitle" th:field="*{metaTitle}" placeholder="Titre pour les moteurs de recherche">
+                    </div>
+                    <div class="form-group">
+                        <label for="metaDescription">Meta Description</label>
+                        <textarea id="metaDescription" th:field="*{metaDescription}" rows="3" placeholder="Description pour les moteurs de recherche"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <h3>Image</h3>
+                    <div class="form-group">
+                        <label for="imageUrl">URL de l'image</label>
+                        <input type="text" id="imageUrl" th:field="*{imageUrl}" placeholder="https://...">
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <h3>Catégories</h3>
+                    <div class="checkbox-group">
+                        <label th:each="cat : ${categories}" class="checkbox-label">
+                            <input type="checkbox" name="categoryIds" th:value="${cat.id}"
+                                   th:checked="${article.categories != null && article.categories.contains(cat)}">
+                            <span th:text="${cat.name}">Catégorie</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">💾 Sauvegarder</button>
+            <a href="/admin/articles" class="btn btn-secondary">Annuler</a>
+        </div>
+    </form>
+</main>
+
+</body>
+</html>

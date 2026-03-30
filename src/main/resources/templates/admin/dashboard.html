@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Dashboard - Administration</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin">
+
+<!-- Admin Navbar -->
+<nav class="admin-navbar">
+    <div class="container nav-content">
+        <a href="/admin" class="logo">
+            <span class="logo-icon">⚙️</span>
+            <span class="logo-text">Iran<span class="logo-accent">News</span> <small>Admin</small></span>
+        </a>
+        <div class="nav-links">
+            <a href="/admin" class="nav-link active">Dashboard</a>
+            <a href="/admin/articles" class="nav-link">Articles</a>
+            <a href="/admin/categories" class="nav-link">Catégories</a>
+            <a href="/" class="nav-link" target="_blank">🌐 Voir le site</a>
+            <a href="/admin/logout" class="nav-link nav-logout">Déconnexion</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Dashboard Content -->
+<main class="container admin-content">
+    <h1>Dashboard</h1>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">📝</div>
+            <div class="stat-info">
+                <h3 th:text="${totalArticles}">0</h3>
+                <p>Articles totaux</p>
+            </div>
+        </div>
+        <div class="stat-card stat-published">
+            <div class="stat-icon">✅</div>
+            <div class="stat-info">
+                <h3 th:text="${publishedArticles}">0</h3>
+                <p>Articles publiés</p>
+            </div>
+        </div>
+        <div class="stat-card stat-draft">
+            <div class="stat-icon">📋</div>
+            <div class="stat-info">
+                <h3 th:text="${draftArticles}">0</h3>
+                <p>Brouillons</p>
+            </div>
+        </div>
+        <div class="stat-card stat-categories">
+            <div class="stat-icon">🏷️</div>
+            <div class="stat-info">
+                <h3 th:text="${totalCategories}">0</h3>
+                <p>Catégories</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="quick-actions">
+        <h2>Actions rapides</h2>
+        <div class="actions-grid">
+            <a href="/admin/articles/new" class="action-card">
+                <span class="action-icon">✏️</span>
+                <span>Nouvel article</span>
+            </a>
+            <a href="/admin/categories/new" class="action-card">
+                <span class="action-icon">➕</span>
+                <span>Nouvelle catégorie</span>
+            </a>
+            <a href="/admin/articles" class="action-card">
+                <span class="action-icon">📄</span>
+                <span>Gérer les articles</span>
+            </a>
+            <a href="/" class="action-card" target="_blank">
+                <span class="action-icon">🌐</span>
+                <span>Voir le site</span>
+            </a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
