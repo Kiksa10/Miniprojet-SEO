@@ -1,8 +1,8 @@
-# 📘 Projet Web Design - Site d'informations sur la guerre en Iran
+# 📘 Projet Web Design - Site d'informations sur la guerre en Iran (PHP Natif)
 
 ## 📌 Contexte
 
-Mini-projet de Web Design consistant à développer un site d'informations avec :
+Mini-projet de Web Design originellement prévu en Java, mais restructuré en **PHP natif (sans framework)** consistant à développer un site d'informations avec :
 
 * Un **FrontOffice** (site public)
 * Un **BackOffice** (administration)
@@ -17,43 +17,43 @@ Créer un site complet permettant :
 * Affichage des articles (public)
 * Gestion des articles (admin)
 * Gestion des catégories
-* Authentification sécurisée
+* Authentification sécurisée (PHP PDO / Session)
 
 ---
 
 ## 🛠️ Technologies utilisées
 
-* **Java 17**
-* **Spring Boot 3.x**
-* **Spring Data JPA**
-* **Thymeleaf**
+* **PHP 8.2** (sans framework)
+* **HTML5 / CSS3**
 * **PostgreSQL**
-* **Maven**
-* **Docker**
+* **Docker / Docker Compose** (Apache 2)
 
 ---
 
 ## 📁 Structure du projet
 
-```
-mon-projet/
-├── src/
-│   ├── main/
-│   │   ├── java/com/projet/irannews/
-│   │   │   ├── IrannewsApplication.java
-│   │   │   ├── entity/
-│   │   │   ├── repository/
-│   │   │   ├── service/
-│   │   │   ├── controller/
-│   │   │   └── config/
-│   │   └── resources/
-│   │       ├── templates/
-│   │       └── static/
-│   ├── docker/
-│   │   └── init.sql
-├── Dockerfile
-├── docker-compose.yml
-├── pom.xml
+La nouvelle structure est séparée visuellement et fonctionnellement :
+
+```text
+Miniprojet-SEO/
+├── main/
+│   ├── back/                  # Administration
+│   │   ├── inc/               # Fonctions métiers PHP (auth, articles, categories, db)
+│   │   ├── pages/             # Pages views pour l'admin (dashboard, crud...)
+│   │   ├── assets/            # CSS spécifique admin
+│   │   └── connexion.php      # Point d'entrée login Admin
+│   │
+│   └── front/                 # Site public
+│       ├── inc/               # (Éventuellement des fonctions spécifiques front)
+│       ├── pages/             # Pages publiques (index, article)
+│       ├── assets/            # CSS public
+│       └── connexion.php      # Base pour la connexion client
+│
+├── src/docker/
+│   └── init.sql               # Script d'init de base de données (inchangé)
+│
+├── Dockerfile                 # Image PHP:8.2-apache + PDO PgSQL
+├── docker-compose.yml         # Conteneurs (db + app)
 └── README.md
 ```
 
@@ -61,75 +61,36 @@ mon-projet/
 
 ## 🗄️ Base de données
 
-### Tables principales
+### Configuration
 
+Les informations de connexion à la base de données sont passées par variables d'environnement Docker au fichier `main/back/inc/db.php`.
+
+Tables principales (conservées) :
 * `articles`
 * `categories`
 * `article_categories`
 * `users`
 
-### Fonctionnalités :
-
-* Articles avec statut (draft/published)
-* Catégories multiples
-* Compteur de vues
-* SEO (meta title, description)
-
 ---
 
 ## 🔐 Authentification
 
-* Login via `/admin/login`
-* Accès sécurisé `/admin/**`
-* Identifiants par défaut :
-
-  ```
+* Login Admin via `/main/back/connexion.php`
+* Mode : **PHP Sessions** (`$_SESSION`)
+* Identifiants par défaut injectés par le script `init.sql` :
+  ```text
   username: admin
   password: admin123
   ```
 
 ---
 
-## 🌐 FrontOffice
+## 🌐 URLs d'accès
 
-### Pages :
+Une fois le conteneur lancé, l'application est accessible sur le port **8080** :
 
-* Accueil (`/`)
-* Article (`/article/{id}`)
-
-### Fonctionnalités :
-
-* Liste des articles publiés
-* Détail article
-* Compteur de vues
-* SEO optimisé
-
----
-
-## 🖥️ BackOffice
-
-### Accès :
-
-```
-/admin
-```
-
-### Fonctionnalités :
-
-* Dashboard
-* CRUD articles
-* Publication
-* Gestion catégories
-
----
-
-## 🔎 SEO (Obligatoire)
-
-* Une seule balise `<h1>` par page
-* Structure : `<h1> → <h2> → <h3>`
-* Meta description
-* Attribut `alt` pour images
-* URLs propres
+* **FrontOffice (Accueil)** : [http://localhost:8080/main/front/pages/index.php](http://localhost:8080/main/front/pages/index.php)
+* **BackOffice (Login)** : [http://localhost:8080/main/back/connexion.php](http://localhost:8080/main/back/connexion.php)
 
 ---
 
@@ -140,104 +101,4 @@ mon-projet/
 ```bash
 docker-compose up --build
 ```
-
-### Accès :
-
-* FrontOffice : http://localhost:8080
-* BackOffice : http://localhost:8080/admin
-
----
-
-## 📦 Livraison
-
-### À fournir :
-
-* ZIP du projet
-* Repo GitHub/GitLab
-* Docker fonctionnel
-* Document technique
-
----
-
-## 📄 Document technique
-
-### Contenu :
-
-#### 1. Présentation
-
-* Description du projet
-* Objectifs
-
-#### 2. Technologies
-
-#### 3. Captures d’écran
-
-* Accueil
-* Article
-* Login
-* Dashboard
-* CRUD
-
-#### 4. Base de données
-
-* Diagramme ER
-* Tables + relations
-
-#### 5. Architecture
-
-* Controller / Service / Repository
-
-#### 6. Déploiement
-
-* Docker
-* Variables d’environnement
-
-#### 7. Informations
-
-* Numéro étudiant : ETU003281 et 
-* Repo : https://github.com/Kiksa10/Miniprojet-SEO.git
-
----
-
-## ⚠️ Contraintes importantes
-
-* Java 17 obligatoire
-* URLs avec ID (pas de slug pour l’instant)
-* Articles visibles seulement si `published`
-* Images avec `alt`
-* Projet fonctionnel avec Docker
-
----
-
-## 🚀 Ordre de génération du code
-
-1. pom.xml
-2. init.sql
-3. application.properties
-4. Application.java
-5. Entities
-6. Repositories
-7. Services
-8. Controllers
-9. Security
-10. Templates
-11. CSS
-12. Docker
-13. README
-14. Document technique
-
----
-
-## 💡 Conseil
-
-Commence par :
-
-1. Base de données
-2. Backend (API + sécurité)
-3. FrontOffice
-4. BackOffice
-5. Docker
-
----
-
-🔥 Projet complet = Backend + Front + Sécurité + SEO + Docker
+*Le port exposé sur l'hôte est 8080 (mappé sur le port 80 d'Apache dans le conteneur).*

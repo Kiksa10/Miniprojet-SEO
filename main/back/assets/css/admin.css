@@ -1,0 +1,89 @@
+/* ==========================================
+   Iran News — Administration Stylesheet (PHP)
+   Dark theme professionnel
+   ========================================== */
+
+:root {
+    --bg-primary: #0a0e17;
+    --bg-secondary: #111827;
+    --bg-card: #1a2234;
+    --bg-card-hover: #1f2b42;
+    --bg-input: #0f1628;
+    --text-primary: #e8edf5;
+    --text-secondary: #8b95a8;
+    --text-muted: #5a6580;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --accent-light: rgba(59, 130, 246, 0.15);
+    --success: #10b981;
+    --success-bg: rgba(16, 185, 129, 0.12);
+    --warning: #f59e0b;
+    --warning-bg: rgba(245, 158, 11, 0.12);
+    --danger: #ef4444;
+    --danger-bg: rgba(239, 68, 68, 0.12);
+    --info: #6366f1;
+    --info-bg: rgba(99, 102, 241, 0.12);
+    --border: #1e293b;
+    --border-light: #2a3650;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.4);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+a:hover { color: var(--accent-hover); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* Navbar */
+.admin-navbar { background: rgba(17, 24, 39, 0.9); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+.nav-content { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+.logo { font-size: 1.2rem; font-weight: bold; color: white !important; display: flex; align-items: center; gap: 8px; }
+.logo-accent { color: var(--accent); }
+.nav-links { display: flex; gap: 10px; }
+.nav-link { color: var(--text-secondary); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.9rem; }
+.nav-link:hover, .nav-link.active { color: white; background: var(--accent-light); }
+.nav-logout { color: var(--danger); }
+.nav-logout:hover { background: var(--danger-bg); }
+
+/* Dashboard & Cards */
+.admin-content { padding: 40px 24px; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.stats-grid, .actions-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: 40px; }
+.stat-card, .action-card { background: var(--bg-card); border: 1px solid var(--border); padding: 24px; border-radius: var(--radius); display: flex; align-items: center; gap: 20px; transition: var(--transition); }
+.action-card { flex-direction: column; text-align: center; color: var(--text-primary); font-weight: 500; }
+.action-card:hover, .stat-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.stat-icon { font-size: 2rem; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: var(--accent-light); }
+
+/* Table */
+.data-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+.data-table th { background: rgba(255, 255, 255, 0.02); color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; }
+
+/* Status & Buttons */
+.status-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; }
+.status-published { background: var(--success-bg); color: var(--success); }
+.status-draft { background: var(--warning-bg); color: var(--warning); }
+.btn { display: inline-flex; padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; align-items: center; gap: 6px; }
+.btn-primary { background: var(--accent); color: white; }
+.btn-secondary { background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border); }
+.btn-sm { padding: 4px 8px; font-size: 0.8rem; }
+
+/* Forms */
+.form-grid { display: grid; grid-template-columns: 1fr 300px; gap: 30px; }
+.form-card { background: var(--bg-card); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 20px; }
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--text-secondary); }
+input[type="text"], input[type="password"], textarea, select { width: 100%; padding: 10px; background: var(--bg-input); border: 1px solid var(--border); border-radius: var(--radius-sm); color: white; }
+input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
+
+/* Login */
+.login-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.login-container { width: 100%; max-width: 400px; }
+.login-card { background: var(--bg-card); padding: 40px; border-radius: var(--radius); border: 1px solid var(--border); text-align: center; }
+.alert { padding: 12px; border-radius: var(--radius-sm); margin-bottom: 20px; font-size: 0.9rem; }
+.alert-success { background: var(--success-bg); color: var(--success); border: 1px solid var(--success); }
+.alert-error { background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger); }

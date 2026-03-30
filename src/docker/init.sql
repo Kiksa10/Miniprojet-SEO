@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS article_categories (
 
 -- Utilisateur admin (mot de passe: admin123, encodé en BCrypt)
 INSERT INTO users (username, password, role) VALUES
-('admin', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'ADMIN');
+('admin', 'admin123', 'ADMIN');
 
 -- Catégories
 INSERT INTO categories (name, description) VALUES

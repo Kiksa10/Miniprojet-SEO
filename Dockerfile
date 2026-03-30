@@ -1,18 +1,19 @@
 # =====================
-# Multi-stage build
+# PHP Apache Build
 # =====================
-FROM maven:3.9-eclipse-temurin-17 AS build
-WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
-COPY src ./src
-RUN mvn clean package -DskipTests -B
+FROM php:8.2-apache
 
-# =====================
-# Runtime
-# =====================
-FROM eclipse-temurin:17-jre
-WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Installer les extensions PostgreSQL pour PHP
+RUN apt-get update && apt-get install -y libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql
+
+# Activer le module rewrite d'Apache (utile pour d'éventuels .htaccess)
+RUN a2enmod rewrite
+
+# Copier le code source de l'application dans le répertoire web d'Apache
+COPY ./main /var/www/html/main
+
+# Changer le port par défaut si nécessaire ou simplement exposer 80
+EXPOSE 80
+
+CMD ["apache2-foreground"]
