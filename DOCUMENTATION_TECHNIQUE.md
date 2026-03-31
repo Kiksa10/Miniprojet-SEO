@@ -61,14 +61,33 @@ Si vous souhaitez obtenir rapidement le Modèle Conceptuel de Données (MCD) sur
 
 ---
 
-## 🖼️ Captures d'écran (FrontOffice et BackOffice)
+## 🛠️ Utilisation du projet
 
-### FrontOffice (FO)
-> *Insérez la capture de la page d'accueil ou des articles.*
-> 
-> *`![Capture FrontOffice](chemin/vers/capture_fo.png)`*
+### 1. Côté Public (FrontOffice)
+Le FrontOffice permet aux visiteurs de consulter les informations.
+* **Page d'accueil** : Affiche les derniers articles publiés, triés par date (du plus récent au plus ancien), avec un système de pagination fluide (6 articles par page).
+> *Insérez votre capture de la page d'accueil.*
+> *`![Capture Accueil FrontOffice](chemin/vers/capture_accueil_fo.png)`*
 
-### BackOffice (BO)
-> *Insérez la capture du tableau de bord ou de l'éditeur d'articles.*
-> 
-> *`![Capture BackOffice](chemin/vers/capture_bo.png)`*
+* **Lecture d'un article** : En cliquant sur un article, on accède à son contenu complet (texte enrichi, images) et son compteur de vues est automatiquement incrémenté.
+> *Insérez votre capture du détail d'un article.*
+> *`![Capture Détail Article](chemin/vers/capture_detail_fo.png)`*
+
+
+### 2. Côté Administration (BackOffice)
+L'accès au BackOffice est protégé. L'administrateur dispose des outils de gestion de contenu.
+* **Tableau de bord (Dashboard)** : Vue globale affichant des statistiques en temps réel (nombre total d'articles, articles publiés, brouillons, nombre de catégories).
+> *Insérez votre capture du Dashboard administrateur.*
+> *`![Capture Dashboard](chemin/vers/capture_dashboard.png)`*
+
+* **Gestion des Catégories** : Permet de structurer le site en créant, renommant ou supprimant les rubriques.
+> *Insérez votre capture du CRUD catégories.*
+> *`![Capture Catégories](chemin/vers/capture_categories.png)`*
+
+* **Rédaction et Gestion des Articles** : L'interface intègre un outil de rédaction de niveau professionnel.
+  * Rédaction avec l'éditeur de texte enrichi **TinyMCE**.
+  * Insertion et téléversement direct d'images (drag & drop) sur le serveur.
+  * Paramètres de référencement (SEO : Meta Tag, Meta Description) et assignation multi-catégories.
+  * Choix du statut (Brouillon / Publié).
+> *Insérez votre capture montrant l'éditeur d'articles en action (avec un texte en gras ou une image!).*
+> *`![Capture Éditeur Article](chemin/vers/capture_editeur.png)`*

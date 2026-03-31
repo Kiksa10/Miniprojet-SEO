@@ -35,9 +35,26 @@ $metaDescription = $article['meta_description'] ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= htmlspecialchars($metaDescription) ?>">
     <title><?= htmlspecialchars($pageTitle) ?> - Iran News</title>
+    
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="<?= htmlspecialchars($pageTitle) ?> - Iran News">
+    <meta property="og:description" content="<?= htmlspecialchars($metaDescription) ?>">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://localhost:8080/main/article/<?= $id ?>">
+    <?php if (!empty($article['image_url'])): ?>
+    <meta property="og:image" content="http://localhost:8080<?= htmlspecialchars($article['image_url']) ?>">
+    <?php endif; ?>
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/main/front/assets/css/style.css" as="style">
     <link rel="stylesheet" href="/main/front/assets/css/style.css">
+    
+    <!-- Defer Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 </head>
 <body class="front">
 
@@ -74,7 +91,7 @@ $metaDescription = $article['meta_description'] ?? '';
 
         <?php if (!empty($article['image_url'])): ?>
             <div class="article-image">
-                <img src="<?= htmlspecialchars($article['image_url']) ?>" alt="<?= htmlspecialchars($article['title']) ?>">
+                <img src="<?= htmlspecialchars($article['image_url']) ?>" alt="<?= htmlspecialchars($article['title']) ?>" loading="lazy" decoding="async">
             </div>
         <?php endif; ?>
 

@@ -64,28 +64,28 @@ INSERT INTO articles (title, content, meta_title, meta_description, status, view
     '<p>La situation géopolitique au Moyen-Orient connaît une escalade significative ces dernières semaines. Les tensions entre les différentes puissances régionales continuent de façonner le paysage politique de la région.</p><p>Les experts en relations internationales soulignent l''importance du dialogue diplomatique pour éviter une escalade supplémentaire. Les Nations Unies ont appelé à la retenue de toutes les parties impliquées.</p><p>L''impact sur les populations civiles reste une préoccupation majeure pour les organisations humanitaires présentes sur le terrain.</p>',
     'Tensions au Moyen-Orient - Analyse géopolitique',
     'Analyse complète de la situation géopolitique actuelle au Moyen-Orient et des tensions croissantes dans la région.',
-    'PUBLISHED', 245, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+    'PUBLISHED', 245, '/main/back/assets/uploads/tension.jpg', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
 ),
 (
     'Impact humanitaire : les réfugiés face à la crise',
     '<p>Le nombre de personnes déplacées continue d''augmenter dans la région, créant une crise humanitaire majeure. Les organisations internationales mobilisent des ressources considérables pour répondre aux besoins essentiels des populations affectées.</p><p>L''UNHCR rapporte que les camps de réfugiés dans les pays voisins atteignent leur capacité maximale. L''accès à l''eau potable, à la nourriture et aux soins médicaux reste un défi quotidien.</p><p>Les enfants sont particulièrement vulnérables dans ce contexte, avec des interruptions prolongées de leur scolarité et des traumatismes psychologiques importants.</p>',
     'Crise humanitaire - Réfugiés et déplacés',
     'Point sur la situation humanitaire et les défis auxquels font face les réfugiés et personnes déplacées.',
-    'PUBLISHED', 189, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+    'PUBLISHED', 189, '/main/back/assets/uploads/impact_humanitaire.jpg', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
 ),
 (
     'Sanctions économiques : conséquences sur la population civile',
     '<p>Les sanctions économiques internationales ont un impact profond sur l''économie et la vie quotidienne des citoyens. L''inflation galopante et la dévaluation de la monnaie nationale affectent le pouvoir d''achat de millions de personnes.</p><p>Les secteurs de la santé et de l''éducation sont particulièrement touchés, avec des pénuries de médicaments et de matériel éducatif.</p>',
     'Sanctions économiques et impact civil',
     'Analyse de l''impact des sanctions économiques internationales sur la population civile.',
-    'PUBLISHED', 132, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+    'PUBLISHED', 132, '/main/back/assets/uploads/sanctions_contre_iran.jpg', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
 ),
 (
     'Diplomatie internationale : les négociations en cours',
     '<p>Plusieurs rounds de négociations diplomatiques se poursuivent dans le but de trouver une résolution pacifique au conflit. Les grandes puissances mondiales sont impliquées dans ces discussions complexes.</p><p>Les pourparlers portent sur le programme nucléaire, les droits de l''homme et la stabilité régionale.</p>',
     'Négociations diplomatiques internationales',
     'Suivi des négociations diplomatiques en cours pour la résolution du conflit.',
-    'DRAFT', 0, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+    'DRAFT', 0, '/main/back/assets/uploads/negociation.jpg', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
 );
 
 -- Liaisons articles-catégories
