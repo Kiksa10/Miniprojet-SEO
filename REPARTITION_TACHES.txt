@@ -1,0 +1,59 @@
+TODO LIST - Miniprojet SEO
+========================================================================
+Répartition simple des tâches pour le projet:
+
+
+------------------------------------------------------------------------
+ETUDIANT 1 : ETU003281
+Profil : Back-end, Architecture & Base de données
+------------------------------------------------------------------------
+
+Configuration Serveur
+    - Création du Dockerfile (PHP 8.2 + Apache)
+    - Docker-compose.yml pour lier PostgreSQL 
+
+Connexion Base de Données
+    - Mise en place du pont sécurisé PDO entre PHP et PostgreSQL (inc/db.php)
+
+Authentification BackOffice
+    - Création du système de connexion par session (admin / admin123)
+    - Protection des routes d'administration
+
+CRUD BackOffice (Système de Gestion)
+    - Développement complet de l'interface d'administration
+    - Ajout, Modification, Suppression et Publication pour les Articles
+    - Ajout, Modification et Suppression pour les Catégories
+
+Système d'Uploads de fichiers
+    - Développement du script PHP de sécurité (inc/upload.php)
+    - Traitement et enregistrement physique des images sur le serveur
+
+Editeur riche
+    - Intégration de TinyMCE pour l'éditeur de texte
+    - Configuration du glisser-déposer pour les images
+
+
+------------------------------------------------------------------------
+ETUDIANT 2 : ETU003360
+Profil : Front-end, Intégration SEO & UX
+------------------------------------------------------------------------
+
+Intégration FrontOffice
+    - Développement de la page d'accueil publique (index.php)
+    - Développement de la vue détaillée d'un article connecté à la BDD
+
+Optimisation SEO
+    - Intégration des données SEO dynamiques (balises Title et Meta Description)
+    - Extraction logique depuis la base de données pour chaque vue
+
+URL Rewriting (SEO Avancé)
+    - Conception et configuration du fichier .htaccess 
+    - Création de "Friendly URLs" propres (ex: /main/accueil, /main/article/1)
+
+Pagination & Navigation
+    - Implémentation du système de pagination SQL (LIMIT / OFFSET)
+    - Interface de navigation sur l'accueil public
+
+Stylisation & Interface Utilisateur (UI)
+    - Personnalisation complète en CSS (thème sombre)
+    - Mise en page du tableau de bord admin et de la grille du site public

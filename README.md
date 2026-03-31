@@ -54,7 +54,9 @@ Miniprojet-SEO/
 │
 ├── Dockerfile                 # Image PHP:8.2-apache + PDO PgSQL
 ├── docker-compose.yml         # Conteneurs (db + app)
-└── README.md
+├── README.md
+├── DOCUMENTATION_TECHNIQUE.md
+└── REPARTITION_TACHES.txt
 ```
 
 ---
@@ -65,7 +67,7 @@ Miniprojet-SEO/
 
 Les informations de connexion à la base de données sont passées par variables d'environnement Docker au fichier `main/back/inc/db.php`.
 
-Tables principales (conservées) :
+Tables principales :
 * `articles`
 * `categories`
 * `article_categories`
@@ -102,4 +104,4 @@ Une fois le conteneur lancé, l'application est accessible sur le port **8080** 
 ```bash
 docker-compose up --build
 ```
-*Le port exposé sur l'hôte est 8080 (mappé sur le port 80 d'Apache dans le conteneur).*
+

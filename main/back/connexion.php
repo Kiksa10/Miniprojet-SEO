@@ -63,11 +63,11 @@ $pageTitle = "Connexion - Administration";
         <form action="" method="post" class="login-form">
             <div class="form-group">
                 <label for="username">Nom d'utilisateur</label>
-                <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required autofocus>
+                <input type="text" id="username" name="username" value="admin" placeholder="Entrez votre nom d'utilisateur" required autofocus >
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+                <input type="password" id="password" name="password" value="admin123" placeholder="Entrez votre mot de passe" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
         </form>
