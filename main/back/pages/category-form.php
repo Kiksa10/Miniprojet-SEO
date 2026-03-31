@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             createCategory($name, $description);
         }
-        header('Location: /main/back/pages/categories.php?msg=saved');
+        header('Location: /main/admin/categories?msg=saved');
         exit;
     }
 }
@@ -51,7 +51,7 @@ $pageTitle = $editMode ? "Modifier la catégorie" : "Nouvelle catégorie";
 <main class="container admin-content">
     <div class="page-header">
         <h1><?= htmlspecialchars($pageTitle) ?></h1>
-        <a href="/main/back/pages/categories.php" class="btn btn-secondary">← Retour</a>
+        <a href="/main/admin/categories" class="btn btn-secondary">← Retour</a>
     </div>
 
     <form action="" method="post" class="admin-form">
@@ -72,7 +72,7 @@ $pageTitle = $editMode ? "Modifier la catégorie" : "Nouvelle catégorie";
 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">💾 Sauvegarder</button>
-            <a href="/main/back/pages/categories.php" class="btn btn-secondary">Annuler</a>
+            <a href="/main/admin/categories" class="btn btn-secondary">Annuler</a>
         </div>
     </form>
 </main>

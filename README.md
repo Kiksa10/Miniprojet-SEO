@@ -89,8 +89,9 @@ Tables principales (conservées) :
 
 Une fois le conteneur lancé, l'application est accessible sur le port **8080** :
 
-* **FrontOffice (Accueil)** : [http://localhost:8080/main/front/pages/index.php](http://localhost:8080/main/front/pages/index.php)
-* **BackOffice (Login)** : [http://localhost:8080/main/back/connexion.php](http://localhost:8080/main/back/connexion.php)
+* **FrontOffice (Accueil)** : [http://localhost:8080/main/accueil](http://localhost:8080/main/accueil)
+* **Détail d'article** : [http://localhost:8080/main/article/1](http://localhost:8080/main/article/1)
+* **BackOffice (Admin)** : [http://localhost:8080/main/admin](http://localhost:8080/main/admin)
 
 ---
 

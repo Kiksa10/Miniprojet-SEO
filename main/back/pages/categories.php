@@ -10,7 +10,7 @@ requireAuth();
 // Action suppression
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
     deleteCategory((int) $_GET['id']);
-    header('Location: /main/back/pages/categories.php?msg=deleted');
+    header('Location: /main/admin/categories?msg=deleted');
     exit;
 }
 
@@ -39,7 +39,7 @@ $msg = $messages[$_GET['msg'] ?? ''] ?? null;
 <main class="container admin-content">
     <div class="page-header">
         <h1>Gestion des catégories</h1>
-        <a href="/main/back/pages/category-form.php" class="btn btn-primary">+ Nouvelle catégorie</a>
+        <a href="/main/admin/category-form" class="btn btn-primary">+ Nouvelle catégorie</a>
     </div>
 
     <?php if ($msg): ?>
@@ -66,7 +66,7 @@ $msg = $messages[$_GET['msg'] ?? ''] ?? null;
                         <td><?= htmlspecialchars($cat['name']) ?></td>
                         <td><?= htmlspecialchars($cat['description'] ?? '') ?></td>
                         <td class="actions-cell">
-                            <a href="/main/back/pages/category-form.php?id=<?= $cat['id'] ?>" class="btn btn-sm btn-edit" title="Modifier">✏️</a>
+                            <a href="/main/admin/category-form/<?= $cat['id'] ?>" class="btn btn-sm btn-edit" title="Modifier">✏️</a>
                             <a href="?action=delete&id=<?= $cat['id'] ?>" class="btn btn-sm btn-delete" title="Supprimer" onclick="return confirm('Êtes-vous sûr ?')">🗑️</a>
                         </td>
                     </tr>

@@ -70,19 +70,19 @@ $pageTitle = "Dashboard - Administration";
     <div class="quick-actions">
         <h2>Actions rapides</h2>
         <div class="actions-grid">
-            <a href="/main/back/pages/article-form.php" class="action-card">
+            <a href="/main/admin/article-form" class="action-card">
                 <span class="action-icon">✏️</span>
                 <span>Nouvel article</span>
             </a>
-            <a href="/main/back/pages/category-form.php" class="action-card">
+            <a href="/main/admin/category-form" class="action-card">
                 <span class="action-icon">➕</span>
                 <span>Nouvelle catégorie</span>
             </a>
-            <a href="/main/back/pages/articles.php" class="action-card">
+            <a href="/main/admin/articles" class="action-card">
                 <span class="action-icon">📄</span>
                 <span>Gérer les articles</span>
             </a>
-            <a href="/main/front/pages/index.php" class="action-card" target="_blank">
+            <a href="/main/accueil" class="action-card" target="_blank">
                 <span class="action-icon">🌐</span>
                 <span>Voir le site</span>
             </a>

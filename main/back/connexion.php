@@ -8,7 +8,7 @@ startSession();
 
 // Si déjà connecté, rediriger vers le dashboard
 if (isLoggedIn()) {
-    header('Location: /main/back/pages/dashboard.php');
+    header('Location: /main/admin/dashboard');
     exit;
 }
 
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($username && $password) {
         if (loginUser($username, $password)) {
-            header('Location: /main/back/pages/dashboard.php');
+            header('Location: /main/admin/dashboard');
             exit;
         } else {
             $error = "Nom d'utilisateur ou mot de passe incorrect.";
@@ -73,7 +73,7 @@ $pageTitle = "Connexion - Administration";
         </form>
 
         <div class="login-footer">
-            <a href="/main/front/pages/index.php">← Retour au site</a>
+            <a href="/main/accueil">← Retour au site</a>
         </div>
     </div>
 </div>

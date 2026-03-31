@@ -13,15 +13,15 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     switch ($_GET['action']) {
         case 'delete':
             deleteArticle($id);
-            header('Location: /main/back/pages/articles.php?msg=deleted');
+            header('Location: /main/admin/articles?msg=deleted');
             exit;
         case 'publish':
             publishArticle($id);
-            header('Location: /main/back/pages/articles.php?msg=published');
+            header('Location: /main/admin/articles?msg=published');
             exit;
         case 'unpublish':
             unpublishArticle($id);
-            header('Location: /main/back/pages/articles.php?msg=unpublished');
+            header('Location: /main/admin/articles?msg=unpublished');
             exit;
     }
 }
@@ -53,7 +53,7 @@ $msg = $messages[$_GET['msg'] ?? ''] ?? null;
 <main class="container admin-content">
     <div class="page-header">
         <h1>Gestion des articles</h1>
-        <a href="/main/back/pages/article-form.php" class="btn btn-primary">+ Nouvel article</a>
+        <a href="/main/admin/article-form" class="btn btn-primary">+ Nouvel article</a>
     </div>
 
     <?php if ($msg): ?>
@@ -90,7 +90,7 @@ $msg = $messages[$_GET['msg'] ?? ''] ?? null;
                         <td><?= $article['view_count'] ?></td>
                         <td><?= date('d/m/Y', strtotime($article['created_at'])) ?></td>
                         <td class="actions-cell">
-                            <a href="/main/back/pages/article-form.php?id=<?= $article['id'] ?>" class="btn btn-sm btn-edit" title="Modifier">✏️</a>
+                            <a href="/main/admin/article-form/<?= $article['id'] ?>" class="btn btn-sm btn-edit" title="Modifier">✏️</a>
                             <?php if ($article['status'] === 'DRAFT'): ?>
                                 <a href="?action=publish&id=<?= $article['id'] ?>" class="btn btn-sm btn-publish" title="Publier">✅</a>
                             <?php else: ?>

@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         updateArticleCategories($id, $categoryIds);
     }
 
-    header('Location: /main/back/pages/articles.php?msg=saved');
+    header('Location: /main/admin/articles?msg=saved');
     exit;
 }
 
@@ -65,7 +65,7 @@ $pageTitle = $editMode ? "Modifier l'article" : "Nouvel article";
 <main class="container admin-content">
     <div class="page-header">
         <h1><?= htmlspecialchars($pageTitle) ?></h1>
-        <a href="/main/back/pages/articles.php" class="btn btn-secondary">← Retour</a>
+        <a href="/main/admin/articles" class="btn btn-secondary">← Retour</a>
     </div>
 
     <form action="" method="post" class="admin-form">
@@ -138,7 +138,7 @@ $pageTitle = $editMode ? "Modifier l'article" : "Nouvel article";
 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">💾 Sauvegarder</button>
-            <a href="/main/back/pages/articles.php" class="btn btn-secondary">Annuler</a>
+            <a href="/main/admin/articles" class="btn btn-secondary">Annuler</a>
         </div>
     </form>
 </main>

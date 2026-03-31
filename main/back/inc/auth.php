@@ -47,7 +47,7 @@ function isLoggedIn(): bool {
  */
 function requireAuth(): void {
     if (!isLoggedIn()) {
-        header('Location: /main/back/connexion.php');
+        header('Location: /main/admin');
         exit;
     }
 }
@@ -59,6 +59,6 @@ function logoutUser(): void {
     startSession();
     session_unset();
     session_destroy();
-    header('Location: /main/back/connexion.php');
+    header('Location: /main/admin');
     exit;
 }

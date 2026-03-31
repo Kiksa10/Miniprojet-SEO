@@ -1,0 +1,37 @@
+RewriteEngine On
+RewriteBase /main/
+
+# Ignorer les répertoires et fichiers physiques existants (css, images, etc.)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ================================
+# FRONT OFFICE
+# ================================
+# Accueil
+RewriteRule ^accueil/?$ front/pages/index.php [L,QSA]
+# Détail d'un article : /main/article/12
+RewriteRule ^article/([0-9]+)/?$ front/pages/article.php?id=$1 [L,QSA]
+
+# ================================
+# BACK OFFICE
+# ================================
+# Login Admin / Accès rapide
+RewriteRule ^admin/?$ back/connexion.php [L,QSA]
+# Déconnexion admin
+RewriteRule ^admin/logout/?$ back/pages/dashboard.php?action=logout [L,QSA]
+# Dashboard
+RewriteRule ^admin/dashboard/?$ back/pages/dashboard.php [L,QSA]
+# Liste des articles
+RewriteRule ^admin/articles/?$ back/pages/articles.php [L,QSA]
+# Formulaire article (édition)
+RewriteRule ^admin/article-form/([0-9]+)/?$ back/pages/article-form.php?id=$1 [L,QSA]
+# Formulaire article (nouveau)
+RewriteRule ^admin/article-form/?$ back/pages/article-form.php [L,QSA]
+# Liste des catégories
+RewriteRule ^admin/categories/?$ back/pages/categories.php [L,QSA]
+# Formulaire catégorie (édition)
+RewriteRule ^admin/category-form/([0-9]+)/?$ back/pages/category-form.php?id=$1 [L,QSA]
+# Formulaire catégorie (nouveau)
+RewriteRule ^admin/category-form/?$ back/pages/category-form.php [L,QSA]

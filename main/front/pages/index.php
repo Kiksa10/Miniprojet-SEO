@@ -35,13 +35,13 @@ $metaDescription = "Site d'informations sur la guerre en Iran. Suivez les derni√
 <!-- Navigation -->
 <nav class="navbar">
     <div class="container nav-content">
-        <a href="/main/front/pages/index.php" class="logo">
+        <a href="/main/accueil" class="logo">
             <span class="logo-icon">üì∞</span>
             <span class="logo-text">Iran<span class="logo-accent">News</span></span>
         </a>
         <div class="nav-links">
-            <a href="/main/front/pages/index.php" class="nav-link active">Accueil</a>
-            <a href="/main/back/connexion.php" class="nav-link">Administration</a>
+            <a href="/main/accueil" class="nav-link active">Accueil</a>
+            <a href="/main/admin" class="nav-link">Administration</a>
         </div>
     </div>
 </nav>
@@ -75,7 +75,7 @@ $metaDescription = "Site d'informations sur la guerre en Iran. Suivez les derni√
                             <span class="article-views">üëÅ <?= $article['view_count'] ?> vues</span>
                         </div>
                         <h3 class="article-card-title">
-                            <a href="/main/front/pages/article.php?id=<?= $article['id'] ?>"><?= htmlspecialchars($article['title']) ?></a>
+                            <a href="/main/article/<?= $article['id'] ?>"><?= htmlspecialchars($article['title']) ?></a>
                         </h3>
                         <p class="article-excerpt"><?= htmlspecialchars($article['meta_description'] ?? '') ?></p>
                         <div class="article-categories">
@@ -83,7 +83,7 @@ $metaDescription = "Site d'informations sur la guerre en Iran. Suivez les derni√
                                 <span class="category-badge"><?= htmlspecialchars($cat['name']) ?></span>
                             <?php endforeach; ?>
                         </div>
-                        <a href="/main/front/pages/article.php?id=<?= $article['id'] ?>" class="read-more">Lire la suite ‚Üí</a>
+                        <a href="/main/article/<?= $article['id'] ?>" class="read-more">Lire la suite ‚Üí</a>
                     </div>
                 </article>
                 <?php endforeach; ?>

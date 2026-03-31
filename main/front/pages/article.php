@@ -44,13 +44,13 @@ $metaDescription = $article['meta_description'] ?? '';
 <!-- Navigation -->
 <nav class="navbar">
     <div class="container nav-content">
-        <a href="/main/front/pages/index.php" class="logo">
+        <a href="/main/accueil" class="logo">
             <span class="logo-icon">📰</span>
             <span class="logo-text">Iran<span class="logo-accent">News</span></span>
         </a>
         <div class="nav-links">
-            <a href="/main/front/pages/index.php" class="nav-link">Accueil</a>
-            <a href="/main/back/connexion.php" class="nav-link">Administration</a>
+            <a href="/main/accueil" class="nav-link">Accueil</a>
+            <a href="/main/admin" class="nav-link">Administration</a>
         </div>
     </div>
 </nav>
@@ -59,7 +59,7 @@ $metaDescription = $article['meta_description'] ?? '';
 <main class="container">
     <article class="article-detail">
         <div class="article-detail-header">
-            <a href="/main/front/pages/index.php" class="back-link">← Retour aux articles</a>
+            <a href="/main/accueil" class="back-link">← Retour aux articles</a>
             <h1><?= htmlspecialchars($article['title']) ?></h1>
             <div class="article-detail-meta">
                 <span class="article-date"><?= date('d F Y', strtotime($article['created_at'])) ?></span>
