@@ -82,8 +82,8 @@ $pageTitle = $editMode ? "Modifier l'article" : "Nouvel article";
                 </div>
 
                 <div class="form-group">
-                    <label for="content">Contenu *</label>
-                    <textarea id="content" name="content" rows="15" placeholder="Contenu de l'article (HTML supporté)" required><?= htmlspecialchars($article['content'] ?? '') ?></textarea>
+                    <label for="content">Contenu</label>
+                    <textarea id="content" name="content" rows="15" placeholder="Contenu de l'article (TinyMCE chargé)"><?= htmlspecialchars($article['content'] ?? '') ?></textarea>
                 </div>
             </div>
 
@@ -142,6 +142,43 @@ $pageTitle = $editMode ? "Modifier l'article" : "Nouvel article";
         </div>
     </form>
 </main>
+
+<script src="https://cdn.tiny.cloud/1/u7oflk0ozm3kqjjhswwok2bmm6e9mn53mc2vbxvb9jit660n/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: '#content',
+        plugins: 'image link media autolink lists table wordcount',
+        toolbar: 'undo redo | blocks | bold italic underline | alignleft aligncenter alignright justify | bullist numlist outdent indent | image link | removeformat',
+        images_upload_url: '/main/back/inc/upload.php',
+        automatic_uploads: true,
+        relative_urls: false,
+        remove_script_host: true,
+        file_picker_types: 'image',
+        skin: 'oxide-dark',
+        content_css: 'dark',
+        height: 500,
+        image_title: true,
+        file_picker_callback: function(cb, value, meta) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+            input.onchange = function() {
+                var file = this.files[0];
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var id = 'blobid' + (new Date()).getTime();
+                    var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                    var base64 = reader.result.split(',')[1];
+                    var blobInfo = blobCache.create(id, file, base64);
+                    blobCache.add(blobInfo);
+                    cb(blobInfo.blobUri(), { title: file.name });
+                };
+                reader.readAsDataURL(file);
+            };
+            input.click();
+        }
+    });
+</script>
 
 </body>
 </html>

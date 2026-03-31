@@ -6,12 +6,25 @@
 require_once __DIR__ . '/../../back/inc/db.php';
 
 /**
- * Récupère les articles publiés pour l'accueil
+ * Récupère les articles publiés avec pagination
  */
-function getFrontArticles(): array {
+function getFrontArticles(int $limit = 6, int $offset = 0): array {
     $pdo = getDbConnection();
-    $stmt = $pdo->query("SELECT * FROM articles WHERE status = 'PUBLISHED' ORDER BY created_at DESC");
+    // PostgreSQL utilise LIMIT et OFFSET
+    $stmt = $pdo->prepare("SELECT * FROM articles WHERE status = 'PUBLISHED' ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
     return $stmt->fetchAll();
+}
+
+/**
+ * Compte le nombre total d'articles publiés pour la pagination
+ */
+function countFrontArticles(): int {
+    $pdo = getDbConnection();
+    $stmt = $pdo->query("SELECT COUNT(*) FROM articles WHERE status = 'PUBLISHED'");
+    return (int) $stmt->fetchColumn();
 }
 
 /**

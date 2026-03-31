@@ -57,6 +57,11 @@ a:hover { color: var(--accent-hover); }
 .category-badge { background: rgba(59, 130, 246, 0.15); color: var(--accent); font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; font-weight: 600; }
 .read-more { font-weight: 600; }
 
+/* Pagination */
+.pagination { display: flex; justify-content: center; gap: 10px; margin-top: 50px; }
+.page-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); transition: 0.3s; font-weight: 600; }
+.page-link:hover, .page-link.active { background: var(--accent); border-color: var(--accent); color: white; }
+
 /* Article Detail */
 .article-detail { padding: 50px 0; max-width: 800px; margin: 0 auto; }
 .back-link { display: inline-block; margin-bottom: 30px; color: var(--text-secondary); }

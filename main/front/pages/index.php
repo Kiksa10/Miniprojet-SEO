@@ -5,7 +5,16 @@
 require_once __DIR__ . '/../../back/inc/db.php';
 require_once __DIR__ . '/../inc/articles.php';
 
-$articles = getFrontArticles();
+// Pagination setup
+$articlesPerPage = 6;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($page < 1) $page = 1;
+
+$offset = ($page - 1) * $articlesPerPage;
+$totalArticles = countFrontArticles();
+$totalPages = ceil($totalArticles / $articlesPerPage);
+
+$articles = getFrontArticles($articlesPerPage, $offset);
 
 $pageTitle = "Accueil - Iran News";
 $metaDescription = "Site d'informations sur la guerre en Iran. Suivez les dernières actualités, analyses et reportages.";
@@ -79,6 +88,23 @@ $metaDescription = "Site d'informations sur la guerre en Iran. Suivez les derni�
                 </article>
                 <?php endforeach; ?>
             </div>
+
+            <!-- Pagination -->
+            <?php if ($totalPages > 1): ?>
+                <div class="pagination">
+                    <?php if ($page > 1): ?>
+                        <a href="?page=<?= $page - 1 ?>" class="page-link">←</a>
+                    <?php endif; ?>
+                    
+                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                        <a href="?page=<?= $i ?>" class="page-link <?= $i === $page ? 'active' : '' ?>"><?= $i ?></a>
+                    <?php endfor; ?>
+
+                    <?php if ($page < $totalPages): ?>
+                        <a href="?page=<?= $page + 1 ?>" class="page-link">→</a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
     </section>
 </main>
@@ -86,7 +112,7 @@ $metaDescription = "Site d'informations sur la guerre en Iran. Suivez les derni�
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
-        <p>&copy; 2025 IranNews — Projet Web Design | ETU003281</p>
+        <p>&copy; 2026 IranNews — Projet Web Design | ETU003281 | ETU003360</p>
     </div>
 </footer>
 

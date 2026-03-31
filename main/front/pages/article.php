@@ -79,7 +79,7 @@ $metaDescription = $article['meta_description'] ?? '';
         <?php endif; ?>
 
         <div class="article-content">
-            <?= $article['content'] // Attention : Contenu HTML direct, XSS possible si le back-office ne filtre pas ?>
+            <?= $article['content'] ?>
         </div>
     </article>
 </main>
@@ -87,7 +87,7 @@ $metaDescription = $article['meta_description'] ?? '';
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
-        <p>&copy; 2025 IranNews — Projet Web Design | ETU003281</p>
+        <p>&copy; 2026 IranNews — Projet Web Design | ETU003281 | ETU003360</p>
     </div>
 </footer>
 
